@@ -1,13 +1,13 @@
 Metadata-Version: 2.1
 Name: algebreb
-Version: 0.1
+Version: 1.0
 Summary: Biblioteca para generar expresiones y ejercicios de algebra
 Home-page: UNKNOWN
 Author: ivan0123456789
 Author-email: <elite-a64@outlook.com>
 License: UNKNOWN
 Description: 
-        
+        # algebreb
 Keywords: python,algebra
 Platform: UNKNOWN
 Classifier: Development Status :: 1 - Planning
