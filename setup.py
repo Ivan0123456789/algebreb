@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '1.0'
+VERSION = '2.0'
 DESCRIPTION = 'Biblioteca para generar expresiones y ejercicios de algebra'
 LONG_DESCRIPTION = 'Conjunto de funciones y clases para la creacion de ejercicios algebraicos'
 
