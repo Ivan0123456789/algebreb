@@ -6,7 +6,7 @@ class SumaPolinomios(DosOperandos):
     def __init__(self, p1, p2):
         super(SumaPolinomios, self).__init__(p1, p2)
         self.oper = '+'
-        self.enunciado = latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr())
+        self.enunciado = '(' + latex(self.op1.as_expr()) + ') ' + self.oper + ' (' + latex(self.op2.as_expr()) + ')'
 
     def operacion(self):
         return self.op1 + self.op2
@@ -18,7 +18,7 @@ class RestaPolinomios(DosOperandos):
     def __init__(self, p1, p2):
         super(RestaPolinomios, self).__init__(p1, p2)
         self.oper = '-'
-        self.enunciado = latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr())
+        self.enunciado = '(' + latex(self.op1.as_expr()) + ') ' + self.oper + ' (' + latex(self.op2.as_expr()) + ')'
 
     def operacion(self):
         return self.op1 - self.op2
@@ -30,7 +30,7 @@ class MultPolinomios(DosOperandos):
     def __init__(self, p1, p2):
         super(MultPolinomios, self).__init__(p1, p2)
         self.oper = '*'
-        self.enunciado = latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr())
+        self.enunciado = '(' + latex(self.op1.as_expr()) + ') ' + self.oper + ' (' + latex(self.op2.as_expr()) + ')'
 
     def operacion(self):
         return self.op1 * self.op2
@@ -42,7 +42,7 @@ class DivPolinomios(DosOperandos):
     def __init__(self, p1, p2):
         super(DivPolinomios, self).__init__(p1, p2)
         self.oper = '/'
-        self.enunciado = latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr())
+        self.enunciado = '(' + latex(self.op1.as_expr()) + ') ' + self.oper + ' (' + latex(self.op2.as_expr()) + ')'
         self.cociente, self.residuo = self.operacion()
 
     def operacion(self):
@@ -67,7 +67,8 @@ class DivPolinomios(DosOperandos):
             'operando2': latex(self.op2.as_expr()),
             'solucion': latex(self.cociente.as_expr()),
             'residuo': latex(self.residuo.as_expr()),
-            'respuestas': [latex(r.as_expr()) for r in self.respuestas]
+            'respuestas': [latex(r.as_expr()) for r in self.respuestas],
+            'enunciado': self.enunciado
         }
 
         return dict
@@ -75,6 +76,7 @@ class DivPolinomios(DosOperandos):
 class GradoPolinomio(UnOperando):
     def __init__(self, op1):
         super(GradoPolinomio, self).__init__(op1)
+        self.enunciado = latex(self.op1.as_expr())
     
     def operacion(self):
         grado = self.op1.total_degree()
@@ -96,7 +98,8 @@ class GradoPolinomio(UnOperando):
             'operacion': self.oper, 
             'operando1': latex(self.op1.as_expr()),
             'solucion': self.res,
-            'respuestas': self.respuestas
+            'respuestas': self.respuestas,
+            'enunciado' : self.enunciado
         }
 
         return dict
@@ -104,18 +107,19 @@ class GradoPolinomio(UnOperando):
 class TermPolinomio(UnOperando):
     def __init__(self, op1):
         super(TermPolinomio, self).__init__(op1)
+        self.enunciado = latex(self.op1.as_expr())
 
     def operacion(self):
         num_terms = len(self.op1.as_dict())
 
         if num_terms == 1:
-            return 'Monomio'
+            return '\\textrm{Monomio}'
         elif num_terms == 2:
-            return 'Binomio'
+            return '\\textrm{Binomio}'
         elif num_terms == 3:
-            return 'Trinomio'
+            return '\\textrm{Trinomio}'
         else:
-            return 'Polinomio'
+            return '\\textrm{Polinomio}'
 
     def as_str(self):
         dict = {
@@ -132,7 +136,8 @@ class TermPolinomio(UnOperando):
             'operacion': self.oper, 
             'operando1': latex(self.op1.as_expr()),
             'solucion': self.res,
-            'respuestas': self.respuestas
+            'respuestas': self.respuestas,
+            'enunciado': self.enunciado
         }
 
         return dict

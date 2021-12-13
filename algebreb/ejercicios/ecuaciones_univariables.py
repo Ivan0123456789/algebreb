@@ -21,8 +21,8 @@ class EcuacionLineal(DosOperandos):
             'operando1': str(self.op1.as_expr()),
             'operando2': str(self.op2.as_expr()),
             'enunciado': str(self.op1.as_expr()) + ' ' + self.oper + ' ' + str(self.op2.as_expr()),
-            'enunciado': [str(r) for r in self.res],
-            'respuestas': [str(r.as_expr()) for r in self.respuestas]
+            'solucion': [str(r) for r in self.res],
+            'respuestas': self.respuestas
         }
 
         return dict
@@ -33,8 +33,10 @@ class EcuacionLineal(DosOperandos):
             'operando1': latex(self.op1.as_expr()),
             'operando2': latex(self.op2.as_expr()),
             'ecuacion': latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr()),
-            'solucion': [latex(r) for r in self.res],
-            'respuestas': [latex(r.as_expr()) for r in self.respuestas]
+            'solucionArr': [latex(r) for r in self.res],
+            'solucion': ','.join(str(r) for r in  self.res),
+            'respuestas': self.respuestas,
+            'enunciado': latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr()),
         }
 
         return dict
@@ -59,7 +61,7 @@ class EcuacionCuadratica(DosOperandos):
             'operando2': str(self.op2.as_expr()),
             'enunciado': str(self.op1.as_expr()) + ' ' + self.oper + ' ' + str(self.op2.as_expr()),
             'solucion': [str(r) for r in self.res],
-            'respuestas': [str(r.as_expr()) for r in self.respuestas]
+            'respuestas': self.respuestas
         }
 
         return dict
@@ -70,8 +72,9 @@ class EcuacionCuadratica(DosOperandos):
             'operando1': latex(self.op1.as_expr()),
             'operando2': latex(self.op2.as_expr()),
             'enunciado': latex(self.op1.as_expr()) + ' ' + self.oper + ' ' + latex(self.op2.as_expr()),
-            'solucion': [latex(r) for r in self.res],
-            'respuestas': [latex(r.as_expr()) for r in self.respuestas]
+            'solucionArr': [latex(r) for r in self.res],
+            'solucion': ','.join(str(r) for r in  self.res),
+            'respuestas': self.respuestas
         }
 
         return dict

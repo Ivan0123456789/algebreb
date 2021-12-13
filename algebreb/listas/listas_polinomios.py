@@ -272,12 +272,23 @@ class ListaGradoPolinomios(Lista):
             p1 = polinomio_coeficientes_aleatorios(grado1, variables, dominio, cmin, cmax, fraccion, completo)
 
             grado = GradoPolinomio(p1)
+
+            r1 = 0
+            r2 = 0
+            r3 = 0
+            while(r1 == r2 or r1 == r3 or r2 == r3):
+                r1 = randint(gmin, gmax+5)
+                r2 = randint(gmin, gmax+5)
+                r3 = randint(gmin, gmax+5)
+                while(r1 == grado.res):
+                    r1 = randint(gmin, gmax+5)
+                while(r2 == grado.res):
+                    r2 = randint(gmin, gmax+5)
+                while(r3 == grado.res):
+                    r3 = randint(gmin, gmax+5)
             
-            r1 = randint(gmin, gmax)
             grado.respuestas.append(r1)
-            r2 = randint(gmin, gmax)
             grado.respuestas.append(r2)
-            r3 = randint(gmin, gmax)
             grado.respuestas.append(r3)
             grado.respuestas.append(grado.res)
 
@@ -311,10 +322,10 @@ class ListaTermPolinomio(Lista):
 
             term = TermPolinomio(p1)
             
-            term.respuestas.append('Monomio')
-            term.respuestas.append('Binomio')
-            term.respuestas.append('Trinomio')
-            term.respuestas.append('Polinomio')
+            term.respuestas.append('\\textrm{Monomio}')
+            term.respuestas.append('\\textrm{Binomio}')
+            term.respuestas.append('\\textrm{Trinomio}')
+            term.respuestas.append('\\textrm{Polinomio}')
 
             shuffle(term.respuestas)
 
